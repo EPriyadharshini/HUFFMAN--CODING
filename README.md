@@ -19,10 +19,10 @@ calculate frequency of occurence
 print the characters and its huffmancode
  
 ## Program:
-```
+
 DEVELOPED BY: Priyadharshini E
 REG.NO:212223230159
-
+```
 # Step 1: Get the input string
 input_string = "priyadhrshini"  # Example input string
 
@@ -72,16 +72,17 @@ print("Character | Huffman Code")
 print("-------------------------")
 for char, code in huffman_codes.items():
     print(f"    {char}    |    {code}")
-
 ```
+
 
 ## Output:
 
-### Print the characters and its huffmancode
+# Print the characters and its huffmancode
 
 
-    ![image](https://github.com/user-attachments/assets/1de5857b-2642-45ec-9d13-8f6918ba4e4e)
+    
 
+   ![image](https://github.com/user-attachments/assets/f788de8a-9ac4-441f-9dab-a2c39a710b33)
 
 
 ## Result
