@@ -22,7 +22,7 @@ print the characters and its huffmancode
 ```
 DEVELOPED BY: Priyadharshini E
 REG.NO:212223230159
-```
+
 # Step 1: Get the input string
 input_string = "priyadhrshini"  # Example input string
 
@@ -73,18 +73,16 @@ print("-------------------------")
 for char, code in huffman_codes.items():
     print(f"    {char}    |    {code}")
 
-
-
-
-
-
 ```
+
 ## Output:
 
 ### Print the characters and its huffmancode
 
 
-![image](https://github.com/user-attachments/assets/5cb7ca83-bb8e-4391-a385-1b4f03e689f4)
+    ![image](https://github.com/user-attachments/assets/1de5857b-2642-45ec-9d13-8f6918ba4e4e)
+
+
 
 ## Result
 Thus the huffman coding was implemented to compress the data using python programming.
