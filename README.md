@@ -23,72 +23,68 @@ print the characters and its huffmancode
 DEVELOPED BY: Priyadharshini E
 REG.NO:212223230159
 ```
+# Step 1: Get the input string
+input_string = "priyadhrshini"  # Example input string
 
-# Get the input String
-```
-string = 'DIGITAL IMAGE'
-class NodeTree(object):
-    def __init__(self, left=None, right=None): 
-        self.left = left
-        self.right=right
-    def children(self):
-        return (self.left,self.right)
-    def nodes (self):
-        return (self.left,self.right)
-    def __str__(self):
-        return '%s %s' %(self.left,self.right)
-```
-
-# Create tree nodes
-```
-def huffman_code_tree (node, left=True, binString=''):
-    if type(node) is str:
-        return {node: binString}
-    (l, r) = node.children()
-    d = dict()
-    d.update(huffman_code_tree (l, True, binString + '0'))
-    d.update(huffman_code_tree (r, False, binString + '1'))
-    return d
-```
-
-
-# Main function to implement huffman coding
-```
-freq = {}
-for c in string:
-    if c in freq:
-        freq[c] += 1
+# Step 2: Calculate frequency of each character in the input string
+frequency = {}
+for char in input_string:
+    if char in frequency:
+        frequency[char] += 1
     else:
-        freq[c] = 1
-freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-nodes=freq
-```
+        frequency[char] = 1
 
-# Calculate frequency of occurrence
-```
-while len(nodes)>1:
-    (key1,c1)=nodes[-1]
-    (key2,c2)=nodes[-2]
-    nodes = nodes[:-2]
-    node = NodeTree (key1, key2)
-    nodes.append((node,c1 + c2))
-    nodes = sorted (nodes, key=lambda x: x[1], reverse=True)
-```
-# Print the characters and its huffmancode
-```
-huffmanCode=huffman_code_tree(nodes[0][0])
-print(' Char | Huffman code ') 
-print('----------------------')
-for (char, frequency) in freq:
-    print('%-4r|%12s'%(char,huffmanCode[char]))
+# Step 3: Create tree nodes
+nodes = [[char, freq] for char, freq in frequency.items()]
+
+# Step 4: Main function to implement Huffman coding
+while len(nodes) > 1:
+    # Sort nodes based on frequency
+    nodes = sorted(nodes, key=lambda x: x[1])
+
+    # Pick two smallest nodes
+    left = nodes.pop(0)
+    right = nodes.pop(0)
+
+    # Create a new node with combined frequency
+    new_node = [[left, right], left[1] + right[1]]
+    nodes.append(new_node)
+
+# The final node is the Huffman tree
+huffman_tree = nodes[0]
+
+
+# Step 5: Generate Huffman codes
+huffman_codes = {}
+
+def generate_codes(tree, code=""):
+    if isinstance(tree[0], str):  # If it's a leaf node
+        huffman_codes[tree[0]] = code
+    else:  # If it's an internal node, recurse
+        generate_codes(tree[0][0], code + "0")
+        generate_codes(tree[0][1], code + "1")
+
+generate_codes(huffman_tree)
+
+
+# Step 6: Print the characters and their Huffman codes
+print("Character | Huffman Code")
+print("-------------------------")
+for char, code in huffman_codes.items():
+    print(f"    {char}    |    {code}")
+
+
+
+
+
 
 ```
 ## Output:
 
 ### Print the characters and its huffmancode
 
-![Screenshot 2024-04-27 224236](https://github.com/Anusharonselva/HUFFMAN--CODING/assets/119405600/5bc9b775-9430-4db2-9ab9-73e4cad9bde2)
 
+![image](https://github.com/user-attachments/assets/5cb7ca83-bb8e-4391-a385-1b4f03e689f4)
 
 ## Result
 Thus the huffman coding was implemented to compress the data using python programming.
